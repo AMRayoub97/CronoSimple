@@ -123,6 +123,8 @@
             background: #3a5ed6;
             transform: scale(1.05);
         }
+
+        
     </style>
 
 </head>
@@ -149,11 +151,16 @@
         </div>
     </main>
 
+    <footer class="footer">
+        <h2>Designed by AMR</h2>
+        <p>&copy; <span id="year"></span> CronoSimple. All rights reserved.</p>
+    </footer>
     
 
     <script>
         let s = m = h = 0;
         let timer;
+        let anyo = document.getElementById("year").textContent = new Date().getFullYear();
 
         function updateClock(){
             s++;
