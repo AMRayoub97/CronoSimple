@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CronoSimple</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: white;
+        }
+
+        h1{
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .rel{
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem 2.5rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .rel p{
+            font-size: 3rem;
+            padding: 0.8rem 1.4rem;
+            min-width: 90px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.55);
+            border-radius: 10px;
+            color: #00eaff;
+            letter-spacing: 2px;
+        }
+
+        .btns{
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        button{
+            padding: 0.7rem 1.7rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #iniciar{
+            background: #00ff99;
+            color: black;
+        }
+        #iniciar:hover{
+            background: #00d57d;
+            transform: scale(1.05);
+        }
+
+        #stop{
+            background: #ff5050;
+            color: white;
+        }
+        #stop:hover{
+            background: #d63b3b;
+            transform: scale(1.05);
+        }
+
+        #reset{
+            background: #4d79ff;
+            color: white;
+        }
+        #reset:hover{
+            background: #3a5ed6;
+            transform: scale(1.05);
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>CronoSimple</h1>
+
+    <div class="rel">
+        <p id="hora">00</p>
+        <p id="min">00</p>
+        <p id="segundos">00</p>
+    </div>
+
+    <div class="btns">
+        <button id="iniciar" onclick="iniciar()">Iniciar</button>
+        <button id="stop" onclick="stop()">Stop</button>
+        <button id="reset" onclick="resetClock()">Restablecer</button>
+    </div>
+
+    
+
+    <script>
+        let s = m = h = 0;
+        let timer;
+
+        function updateClock(){
+            s++;
+            if(s >= 60){
+                s = 0;
+                m++;
+            }
+            if(m >= 60){
+                m = 0;
+                h++;
+            }
+            if(h >= 24){
+                h = 0;
+            }
+
+            document.getElementById("hora").textContent = h.toString().padStart(2,"0");
+            document.getElementById("min").textContent = m.toString().padStart(2,"0");
+            document.getElementById("segundos").textContent = s.toString().padStart(2,"0");
+        }
+
+        function iniciar(){
+            timer = setInterval(updateClock, 1000);
+        }
+
+        function stop(){
+            clearInterval(timer);
+        }
+
+        function resetClock(){
+            stop();
+            s = m = h = 0;
+
+            document.getElementById("hora").textContent = "00";
+            document.getElementById("min").textContent = "00";
+            document.getElementById("segundos").textContent = "00";
+        }
+    </script>
+
+</body>
+</html>
