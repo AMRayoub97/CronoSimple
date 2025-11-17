@@ -26,10 +26,37 @@
             color: white;
         }
 
-        h1{
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+        .top-header{
+            width: 100%;
+            padding: 1rem 2rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: flex;
+            justify-content: center;
+
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .top-header .logo{
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .top-header .logo .icon{
+            font-size: 1.8rem;
+        }
+
+        .top-header h1{
+            font-size: 2rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
         }
 
         .rel{
@@ -100,8 +127,13 @@
 
 </head>
 <body>
+    <header class="top-header">
+        <div class="logo">
+            <span class="icon">⏱️</span>
+            <h1>CronoSimple</h1>
+        </div>
+    </header>
 
-    <h1>CronoSimple</h1>
 
     <div class="rel">
         <p id="hora">00</p>
